@@ -1,8 +1,7 @@
-// components/PokemonCard.tsx
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { Pokemon } from '@/types';
+import Image from "next/image";
+import { Pokemon } from "@/types";
 
 type Props = {
   pokemon: Pokemon;
@@ -11,19 +10,52 @@ type Props = {
   onRemove: () => void;
 };
 
-export default function PokemonCard({ pokemon, inTeam, onAdd, onRemove }: Props) {
+export default function PokemonCard({
+  pokemon,
+  inTeam,
+  onAdd,
+  onRemove,
+}: Props) {
   return (
-    <div className="mb-6 p-4 border rounded flex items-center gap-4 bg-white shadow">
-      <Image src={pokemon.image} alt={pokemon.name} width={80} height={80} />
-      <div>
-        <h2 className="text-xl font-semibold capitalize text-red-500">{pokemon.name}</h2>
-        <p className="mb-1">Types: <span className="capitalize">{pokemon.types.join(', ')}</span></p>
-        {inTeam ? (
-          <button onClick={onRemove} className="bg-red-500 text-white px-3 py-1 rounded">Remove from Team</button>
-        ) : (
-          <button onClick={onAdd} className="bg-green-500 text-white px-3 py-1 rounded">Add to Team</button>
-        )}
+    <div className="my-6 px-4 border py-3 border-white searchbar flex lg:flex-row flex-col justify-center items-center gap-4 shadow">
+      <div className="flex items-center">
+        <Image
+          src={pokemon.image}
+          alt={pokemon.name}
+          width={250}
+          height={200}
+          className="w-auto min-w-[100px] min-h-[100px] object-contain object-left"
+        />
+        <div>
+          <h2
+            className="text-xl font-semibold capitalize"
+            style={{ color: "#FFE031" }}
+          >
+            {pokemon.name}
+          </h2>
+          <p className="mb-1 text-white">
+            Types:{" "}
+            <span className="capitalize">{pokemon.types.join(", ")}</span>
+          </p>
+        </div>
       </div>
+      {inTeam ? (
+        <button
+          onClick={onRemove}
+          className="text-white p-3 lg:ms-auto custom-button"
+          style={{ backgroundColor: "#F9292C" }}
+        >
+          Remove from Team
+        </button>
+      ) : (
+        <button
+          onClick={onAdd}
+          className="text-white p-3 lg:ms-auto custom-button"
+          style={{ backgroundColor: "#6d5ddd" }}
+        >
+          Add to Team
+        </button>
+      )}
     </div>
   );
 }
