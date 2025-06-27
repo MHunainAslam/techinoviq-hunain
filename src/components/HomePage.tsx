@@ -124,7 +124,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="w-3/4 m-auto ">
+      <div className="md:w-3/4 w-4/5 m-auto ">
         <SearchBar
           value={search}
           onChange={setSearch}
